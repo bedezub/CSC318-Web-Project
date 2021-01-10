@@ -35,9 +35,8 @@ section h2 {
 }
 
 .fskm, .fskm h2 {
-    background-color: rgb(212, 200, 101);
-    color:rgb(68, 151, 206);
-    /* background-image: linear-gradient(to right, #314755, #26a0da); */
+    background-color: #254769;
+    color:#f6505c;
     background-position: center;
     background-size: cover;
     background-blend-mode: multiply;
@@ -46,9 +45,8 @@ section h2 {
 }
 
 .fpa, .fpa h2 {
-    background-color: rgb(68, 151, 206);
-    color:rgb(212, 200, 101);
-    /* background-image: linear-gradient(to right, #348F50, #56B4D3); */
+    background-color: #f6505c;
+    color:#254769;
     background-position: center;
     background-size: cover;
     background-blend-mode: multiply;
@@ -79,7 +77,7 @@ section h2 {
 	width: 100%;
 	height: 100%;
 	z-index: 1;
-	background-color: rgba(255,255,255,0.2);
+	background-color: rgba(255,255,255,0.1);
 	transition: all 0.3s;
 }
 
