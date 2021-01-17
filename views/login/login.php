@@ -11,10 +11,10 @@
         <div class="header">
             <h2>Login</h2>
         </div>
-        <form id="form" class="form">
+        <form id="form" class="form" method="POST">
             <div class="form-control">
                 <label for="username">Student ID</label>
-                <input type="text" placeholder="johndoe12" id="username" />
+                <input type="text" placeholder="2018" id="username" />
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
                 <small>Error message</small>
@@ -27,9 +27,11 @@
                 <small>Error message</small>
             </div>
             <div class="acc-exist-wrapper">
-                <p class="acc-exist"><a href="../registrationpage/registration.html">Register an account</a></p>
+                <p class="acc-exist">
+                    <a href="../registrationpage/registration.html">Register an account</a>
+                </p>
             </div>
-            <button>Submit</button>
+            <button type="submit">Submit</button>
         </form>
     </div>
 </body>
