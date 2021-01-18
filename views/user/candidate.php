@@ -9,6 +9,18 @@
         if(isset($_POST['status'])) {
             if($_POST['status'] == "update") {
                 echo '<script>console.log("masuk sini", '. json_encode($_POST) .')</script>';
+                if($_POST['userpassword'] == $_POST['confirmpassword']) {
+                    $candidateID = $_POST['candidateID'];
+                    $email = $_POST['email'];
+                    $username = $_POST['username'];
+                    $userpassword = $_POST['userpassword'];
+                    $sql = "UPDATE Candidates 
+                    SET email = '$email', username = '$username', userpassword = $userpassword 
+                    WHERE candidateID = $candidateID";
+                    $result = $conn->query($sql);
+                } else {
+                    echo '<script>console.log("Password not match", '. json_encode($_POST) .')</script>';
+                }
             } 
         }
 
@@ -46,12 +58,16 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                                     <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                                        name="candidateID" value="<?php echo $candidate['candidateID']; ?>" placeholder="Student ID">
+                                                        name="candidateID" value="<?php echo $candidate['candidateID']; ?>" placeholder="Student ID" readonly>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                                        name="username" value="<?php echo $candidate['username']; ?>" placeholder="Name">
+                                                        name="userType" value="<?php echo $candidate['userType']; ?>" placeholder="User Type" readonly>
                                                 </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                                name="username" value="<?php echo $candidate['username']; ?>"placeholder="Full Name">
                                             </div>
                                             <div class="form-group">
                                                 <input type="email" class="form-control form-control-user" id="exampleInputEmail"
@@ -69,17 +85,16 @@
                                             </div>
                                             <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
-                                                name="faculty" value="<?php echo $faculty; ?>" id="exampleRepeatPassword" placeholder="faculty">
+                                                name="faculty" value="<?php echo $faculty; ?>" id="exampleRepeatPassword" placeholder="faculty" readonly>
                                             </div>
-                                            <input type="text">
-                                            <a href="update_candidate.php" class="btn btn-primary btn-user btn-block">
-                                            <input type="hidden" name="status" value="updateDetails">
+                                            <input type="hidden" name="status" value="update">
+                                            <button type="sumbit" class="btn btn-primary btn-user btn-block">
                                                 Update Profile
-                                            </a>
-                                            <a href="login.html" class="btn btn-success btn-user btn-block">
-                                                Add Profile Picture
-                                            </a>
+                                            </button>
                                         </form>
+                                        <!-- <a href="login.html" class="btn btn-success btn-user btn-block">
+                                            Add Profile Picture
+                                        </a> -->
                                     </div>
                                 </div>
                             </div>
