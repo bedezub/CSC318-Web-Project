@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/loginstyles.css">
+    <link rel="stylesheet" href="../../assets/css/loginstyles.css">
     <title>UiTM Voting System</title>
 </head>
 <body>
@@ -63,7 +63,7 @@
             </div>
             <div class="acc-exist-wrapper">
                 <p class="acc-exist">
-                    <a href="../registrationpage/registration.html">Register an account</a>
+                    <a href="../register/registration.php">Register an account</a>
                 </p>
             </div>
             <button type="submit">Submit</button>

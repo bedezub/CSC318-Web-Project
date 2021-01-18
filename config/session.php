@@ -4,6 +4,7 @@
 
     $user_check = $_SESSION['login_user'];
     $user_type = $_SESSION['user_type'];
+    
     if($user_type == 'voter' || $user_type == 'admin') {
         $sql = "SELECT * FROM Users WHERE studentID = $user_check";
     } else {

@@ -2,27 +2,24 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/fvotestyles.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <section class="fskm">
-            <h2>Fakulti Sains Komputer dan Matematik</h2>
-            <div class="btn btn-animate">
-                <span>VOTE</span>
+<?php include "../../views/layout/head.php"; ?>
+<body id="page-top">
+    <div id="wrapper">
+        <?php include "../../views/layout/sidebar.php"; ?>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <?php include "../../views/layout/topbar.php"; ?>
+                <div class="container-fluid">
+                    
+                    <!-- Magic Happens Here -->
+
+                </div>
             </div>
-        </section>
-    
-        <section class="fpa">
-            <h2>Fakulti Perladangan dan Agroteknologi</h2>
-            <div class="btn btn-animate">
-                <span>VOTE</span>
-            </div>
-        </section>
+            <?php include '../../views/layout/footer.php'?>
+        </div>
     </div>
+    <?php include '../../views/layout/scrollTop.php'?>
+    <?php include '../../views/layout/modal.php'?>
+    <?php include '../../views/layout/javascript.php'?>
 </body>
 </html>
