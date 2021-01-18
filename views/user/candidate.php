@@ -22,6 +22,35 @@
                     echo '<script>console.log("Password not match", '. json_encode($_POST) .')</script>';
                 }
             } 
+        } else if(isset($_FILES['image'])) {
+            $errors= array();
+            $file_name = $_FILES['image']['name'];
+            $file_size =$_FILES['image']['size'];
+            $file_tmp =$_FILES['image']['tmp_name'];
+            $file_type=$_FILES['image']['type'];
+            $file_format = explode('.', $_FILES['image']['name']);
+            $file_config = end($file_format);
+            $file_ext=strtolower($file_config);
+            $extensions = array("jpeg","jpg","png");
+
+            if(in_array($file_ext,$extensions)=== false){
+               $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+            }
+    
+            if($file_size > 2097152){
+               $errors[]='File size must be excately 2 MB';
+            }
+    
+            if(empty($errors) == true) {
+                $name = $login_id . "-". time() . ".jpg";
+               move_uploaded_file($file_tmp,"../../assets/img/profilePicture/". $name);
+               $sql = "UPDATE Candidates 
+               SET profilePicture = '$name'
+               WHERE candidateID = $login_id";
+               $result = $conn->query($sql);
+            } else {
+               print_r($errors);
+            }
         }
 
         $sql  = "SELECT * FROM Candidates WHERE CandidateID = $login_id";
@@ -37,6 +66,14 @@
             $faculty = "Fakulti Perladangan dan Agroteknologi";
         }
     ?>
+
+    <!-- <style>
+        .bg-profile-picture {
+              background: url("../../assets/img/profilePhoto/111.jpg");
+              background-position: center;
+              background-size: cover;
+        }
+    </style> -->
     <div id="wrapper">
         <?php include "../../views/layout/sidebar.php"; ?>
         <div id="content-wrapper" class="d-flex flex-column">
@@ -47,7 +84,14 @@
                         <div class="card-body p-0">
                             <!-- Nested Row within Card Body -->
                             <div class="row">
-                                <div class="col-lg-5 d-none d-lg-block bg-register-image">
+                                <div class="col-lg-5 d-none d-lg-block .bg-profile-picture">
+                                    <?php if($candidate['profilePicture'] != "") { ?>
+                                    <img 
+                                        src="../../assets/img/profilePicture/<?php echo $candidate['profilePicture']; ?>"
+                                        style="background-position: center; background-size: cover;"
+                                        width="500px" height="100%"
+                                        >
+                                    <?php } ?>
                                 </div>
                                 <div class="col-lg-7">
                                     <div class="p-5">
@@ -88,13 +132,16 @@
                                                 name="faculty" value="<?php echo $faculty; ?>" id="exampleRepeatPassword" placeholder="faculty" readonly>
                                             </div>
                                             <input type="hidden" name="status" value="update">
-                                            <button type="sumbit" class="btn btn-primary btn-user btn-block">
+                                            <button type="submit" class="btn btn-primary btn-user btn-block">
                                                 Update Profile
                                             </button>
                                         </form>
-                                        <!-- <a href="login.html" class="btn btn-success btn-user btn-block">
-                                            Add Profile Picture
-                                        </a> -->
+                                        <form class="user" method="POST" enctype="multipart/form-data">
+                                            <div class="form-group row" style="margin-top: 15px;">
+                                                <input style="margin-left: 30%; margin-bottom: 3%;" type="file" name="image"/>
+                                                <input type="submit" value="Upload profile photo" class="btn btn-success btn-user btn-block">
+                                            </div>
+                                          </form>
                                     </div>
                                 </div>
                             </div>
