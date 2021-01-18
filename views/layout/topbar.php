@@ -53,10 +53,22 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <?php if($user_type == "voter") { ?>
+                    <a class="dropdown-item" href="../../views/user/voter.php">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Profile
+                    </a>
+                <?php } else if($user_type == "candidate") { ?>
+                    <a class="dropdown-item" href="../../views/user/candidate.php">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                 </a>
+                <?php } else { ?>
+                    <a class="dropdown-item" href="../../views/user/">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+                </a>
+                <?php } ?>
                 <a class="dropdown-item" href="#">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Settings

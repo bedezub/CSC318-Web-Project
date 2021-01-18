@@ -11,7 +11,7 @@
         $sql = "SELECT * FROM Candidates WHERE candidateID = $user_check";
     }
     $result = $conn1->query($sql);
-    echo '<script>console.log("masuk sini", '. json_encode($result) .')</script>';
+    //echo '<script>console.log("masuk sini", '. json_encode($result) .')</script>';
     if($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             if($user_type == 'voter' ) {
