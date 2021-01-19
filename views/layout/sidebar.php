@@ -33,14 +33,14 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="../user/candidate.php">
+        <a class="nav-link" href="../user/manifesto.php">
             <i class="fas fa-fw fa-file"></i>
             <span>Manifesto</span></a>
     </li>
     <?php } else if($user_type == "voter") { ?>
 
     <?php } ?>
-    
+
     <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">

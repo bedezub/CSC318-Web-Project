@@ -42,11 +42,11 @@
     
                         if(empty($errors) == true) {
                             $name = $login_id . "-". time() . ".jpg";
-                           move_uploaded_file($file_tmp,"../../assets/img/profilePicture/". $name);
-                           $sql = "UPDATE Candidates 
-                           SET profilePicture = '$name'
-                           WHERE candidateID = $login_id";
-                           $result = $conn->query($sql);
+                            move_uploaded_file($file_tmp,"../../assets/img/profilePicture/". $name);
+                            $sql = "UPDATE Candidates 
+                            SET profilePicture = '$name'
+                            WHERE candidateID = $login_id";
+                            $result = $conn->query($sql);
                         } else {
                            print_r($errors);
                         }

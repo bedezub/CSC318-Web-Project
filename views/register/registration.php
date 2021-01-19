@@ -10,7 +10,6 @@
 </head>
 <body>
 <?php 
-        echo '<script>console.log('. json_encode($_POST) .')</script>';
         if(isset($_POST["email"])) {
             if($_POST['password'] == $_POST['confirmPassword']) {
                 $conn = OpenCon();
@@ -26,8 +25,8 @@
                     $add = "INSERT INTO Users (studentID, email, username, userpassword, isAttend, userType, faculty)
                     VALUES ('$studentID', '$email', '$name', '$password', 0, '$userType', '$faculty')";    
                 } else {
-                    $add = "INSERT INTO Candidates (candidateID, email, username, userpassword, profilePicture, userType, faculty, manifesto)
-                    VALUES ('$studentID', '$email', '$name', '$password', '', '$userType', '$faculty', '')";  
+                    $add = "INSERT INTO Candidates (candidateID, email, username, userpassword, profilePicture, userType, faculty, manifesto, manifestoMedia)
+                    VALUES ('$studentID', '$email', '$name', '$password', '', '$userType', '$faculty', '', '')";  
                 }   
 
                 if(mysqli_query($conn,$add)) {
