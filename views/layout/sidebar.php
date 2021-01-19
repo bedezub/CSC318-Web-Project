@@ -31,14 +31,17 @@
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
     </li>
-
     <li class="nav-item">
         <a class="nav-link" href="../user/manifesto.php">
             <i class="fas fa-fw fa-file"></i>
             <span>Manifesto</span></a>
     </li>
     <?php } else if($user_type == "voter") { ?>
-
+        <li class="nav-item">
+        <a class="nav-link" href="../user/voter.php">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Profile</span></a>
+        </li>
     <?php } ?>
 
     <!-- <li class="nav-item">
