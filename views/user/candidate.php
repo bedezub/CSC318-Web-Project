@@ -7,9 +7,11 @@
     <?php
         $conn = openCon();
         if(isset($_POST['status'])) {
+
             if($_POST['status'] == "update") {
-                echo '<script>console.log("masuk sini", '. json_encode($_POST) .')</script>';
+                echo '<script>console.log("masuk sini", '. json_encode(isset($_FILES['image'])) .')</script>';
                 if($_POST['userpassword'] == $_POST['confirmpassword']) {
+                    echo '<script>console.log("masuk dalam sini", '. json_encode($_POST) .')</script>';
                     $candidateID = $_POST['candidateID'];
                     $email = $_POST['email'];
                     $username = $_POST['username'];
@@ -18,41 +20,45 @@
                     SET email = '$email', username = '$username', userpassword = $userpassword 
                     WHERE candidateID = $candidateID";
                     $result = $conn->query($sql);
+
+                    if(isset($_FILES['image'])) {
+                        $errors= array();
+                        $file_name = $_FILES['image']['name'];
+                        $file_size =$_FILES['image']['size'];
+                        $file_tmp =$_FILES['image']['tmp_name'];
+                        $file_type=$_FILES['image']['type'];
+                        $file_format = explode('.', $_FILES['image']['name']);
+                        $file_config = end($file_format);
+                        $file_ext=strtolower($file_config);
+                        $extensions = array("jpeg","jpg","png");
+
+                        if(in_array($file_ext,$extensions)=== false){
+                           $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+                        }
+    
+                        if($file_size > 2097152){
+                           $errors[]='File size must be excately 2 MB';
+                        }
+    
+                        if(empty($errors) == true) {
+                            $name = $login_id . "-". time() . ".jpg";
+                           move_uploaded_file($file_tmp,"../../assets/img/profilePicture/". $name);
+                           $sql = "UPDATE Candidates 
+                           SET profilePicture = '$name'
+                           WHERE candidateID = $login_id";
+                           $result = $conn->query($sql);
+                        } else {
+                           print_r($errors);
+                        }
+                    }
                 } else {
                     echo '<script>console.log("Password not match", '. json_encode($_POST) .')</script>';
                 }
-            } 
-        } else if(isset($_FILES['image'])) {
-            $errors= array();
-            $file_name = $_FILES['image']['name'];
-            $file_size =$_FILES['image']['size'];
-            $file_tmp =$_FILES['image']['tmp_name'];
-            $file_type=$_FILES['image']['type'];
-            $file_format = explode('.', $_FILES['image']['name']);
-            $file_config = end($file_format);
-            $file_ext=strtolower($file_config);
-            $extensions = array("jpeg","jpg","png");
-
-            if(in_array($file_ext,$extensions)=== false){
-               $errors[]="extension not allowed, please choose a JPEG or PNG file.";
-            }
-    
-            if($file_size > 2097152){
-               $errors[]='File size must be excately 2 MB';
-            }
-    
-            if(empty($errors) == true) {
-                $name = $login_id . "-". time() . ".jpg";
-               move_uploaded_file($file_tmp,"../../assets/img/profilePicture/". $name);
-               $sql = "UPDATE Candidates 
-               SET profilePicture = '$name'
-               WHERE candidateID = $login_id";
-               $result = $conn->query($sql);
             } else {
-               print_r($errors);
+                echo '<script>console.log("Error?", '. json_encode($_POST) .')</script>';
             }
-        }
-
+        } 
+        
         $sql  = "SELECT * FROM Candidates WHERE CandidateID = $login_id";
         $result = $conn->query($sql);
 
@@ -67,13 +73,6 @@
         }
     ?>
 
-    <!-- <style>
-        .bg-profile-picture {
-              background: url("../../assets/img/profilePhoto/111.jpg");
-              background-position: center;
-              background-size: cover;
-        }
-    </style> -->
     <div id="wrapper">
         <?php include "../../views/layout/sidebar.php"; ?>
         <div id="content-wrapper" class="d-flex flex-column">
@@ -98,7 +97,7 @@
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4">Profile Details</h1>
                                         </div>
-                                        <form class="user" method="POST">
+                                        <form class="user" enctype="multipart/form-data" method="POST">
                                             <div class="form-group row">
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                                     <input type="text" class="form-control form-control-user" id="exampleFirstName"
@@ -131,17 +130,14 @@
                                             <input type="text" class="form-control form-control-user"
                                                 name="faculty" value="<?php echo $faculty; ?>" id="exampleRepeatPassword" placeholder="faculty" readonly>
                                             </div>
+                                            <div class="form-group roq">
+                                                <input style="margin-left: 30%; margin-bottom: 3%;" type="file" name="image"/>
+                                            </div>
                                             <input type="hidden" name="status" value="update">
                                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                                 Update Profile
                                             </button>
                                         </form>
-                                        <form class="user" method="POST" enctype="multipart/form-data">
-                                            <div class="form-group row" style="margin-top: 15px;">
-                                                <input style="margin-left: 30%; margin-bottom: 3%;" type="file" name="image"/>
-                                                <input type="submit" value="Upload profile photo" class="btn btn-success btn-user btn-block">
-                                            </div>
-                                          </form>
                                     </div>
                                 </div>
                             </div>
