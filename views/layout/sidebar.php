@@ -38,13 +38,23 @@
     </li>
     <?php } else if($user_type == "voter") { ?>
         <li class="nav-item">
+        <a class="nav-link" href="../vote/castvote.php">
+            <i class="fas fa-fw fa-check"></i>
+            <span>Cast Vote</span></a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="../user/viewcandidate.php">
+            <i class="fas fa-fw fa-users"></i>
+            <span>View Candidates</span></a>
+        </li>
+        <li class="nav-item">
         <a class="nav-link" href="../user/voter.php">
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
         </li>
     <?php } ?>
 
-    <!-- <li class="nav-item">
+    <!-- <li class="nav-item">fa fa-usersfa-users fa-external-link-square
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
