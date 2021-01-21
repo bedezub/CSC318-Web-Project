@@ -54,17 +54,17 @@
         </li>
     <?php } else { ?>
         <li class="nav-item">
-        <a class="nav-link" href="../views/admin/managecandidate.php">
+        <a class="nav-link" href="../../views/admin/managecandidate.php">
             <i class="fas fa-fw fa-check"></i>
             <span>Manage Candidate</span></a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="../views/admin/managevoter.php">
+        <a class="nav-link" href="../../views/admin/managevoter.php">
             <i class="fas fa-fw fa-users"></i>
             <span>Manage Voter</span></a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="../views/admin/viewresult.php">
+        <a class="nav-link" href="../../views/admin/viewresult.php">
             <i class="fas fa-fw fa-user"></i>
             <span>View Result</span></a>
         </li>
