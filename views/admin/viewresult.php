@@ -21,22 +21,6 @@ foreach($voteResults as $voteResult) {
 }
 
 echo '<script>console.log("masuk sini", '. json_encode($dataPoints) .')</script>';
-
-// $dataPoints = array(
-//     array("label"=> "Education", "y"=> 284935),
-//     array("label"=> "Entertainment", "y"=> 256548),
-//     array("label"=> "Lifestyle", "y"=> 245214),
-//     array("label"=> "Business", "y"=> 233464),
-//     array("label"=> "Music & Audio", "y"=> 200285),
-//     array("label"=> "Personalization", "y"=> 194422),
-//     array("label"=> "Tools", "y"=> 180337),
-//     array("label"=> "Books & Reference", "y"=> 172340),
-//     array("label"=> "Travel & Local", "y"=> 118187),
-//     array("label"=> "Puzzle", "y"=> 107530)
-// );
-
-// echo '<script>console.log("masuk sini", '. json_encode($dataPoints) .')</script>';
-	
 ?>
 
 <!DOCTYPE html>
