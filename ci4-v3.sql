@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 18, 2021 at 11:31 PM
+-- Generation Time: Jan 21, 2021 at 04:00 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.25
 
@@ -35,15 +35,19 @@ CREATE TABLE `Candidates` (
   `profilePicture` varchar(80) NOT NULL,
   `userType` varchar(80) NOT NULL,
   `faculty` varchar(80) NOT NULL,
-  `manifesto` varchar(255) NOT NULL
+  `manifesto` varchar(255) NOT NULL,
+  `manifestoMedia` varchar(80) NOT NULL,
+  `mediaType` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `Candidates`
 --
 
-INSERT INTO `Candidates` (`candidateID`, `email`, `username`, `userpassword`, `profilePicture`, `userType`, `faculty`, `manifesto`) VALUES
-(111, 'ali@gmail.com', 'Muhd Ali', '12345', '111-1611009039.jpg', 'candidate', 'fskm', '');
+INSERT INTO `Candidates` (`candidateID`, `email`, `username`, `userpassword`, `profilePicture`, `userType`, `faculty`, `manifesto`, `manifestoMedia`, `mediaType`) VALUES
+(111, 'ali@gmail.com', 'Muhd Ali', '12345', '111-1611022574.jpg', 'candidate', 'fskm', 'Saya akan kasi RM5\r\n- Percuma botol air milo\r\n- Ais krim chocolate\r\n- Nescafe ais\r\n- Teh tarik\r\n- Gula melaka', '111.mp4', 'video/mp4'),
+(112, 'dd', '', '', '', '', '', '', '', ''),
+(141, '1111', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -67,8 +71,8 @@ CREATE TABLE `Users` (
 
 INSERT INTO `Users` (`studentID`, `email`, `username`, `userpassword`, `isAttend`, `userType`, `faculty`) VALUES
 (1111, 'admin@gmail.com', 'admin', '12345', 1, 'admin', 'fskm'),
-(2222, 'zubli@gmail.com', 'zub', '123', 0, 'voter', 'fskm'),
-(2018442458, 'voter', 'voter', '12345', 1, 'Admin', 'FSKM');
+(2222, 'zubliquzaini@gmail.com', 'zubquzaini', '123', 0, 'voter', 'fskm'),
+(2018442458, 'voter', 'voter', '12345', 1, 'Admin', 'fskm');
 
 -- --------------------------------------------------------
 
@@ -81,6 +85,13 @@ CREATE TABLE `Vote` (
   `studentID` int(12) NOT NULL,
   `candidateID` int(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `Vote`
+--
+
+INSERT INTO `Vote` (`voteID`, `studentID`, `candidateID`) VALUES
+(2121151, 2222, 111);
 
 --
 -- Indexes for dumped tables
