@@ -52,7 +52,25 @@
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
         </li>
+    <?php } else { ?>
+        <li class="nav-item">
+        <a class="nav-link" href="../views/admin/managecandidate.php">
+            <i class="fas fa-fw fa-check"></i>
+            <span>Manage Candidate</span></a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="../views/admin/managevoter.php">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Manage Voter</span></a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="../views/admin/viewresult.php">
+            <i class="fas fa-fw fa-user"></i>
+            <span>View Result</span></a>
+        </li>
     <?php } ?>
+    <!-- TODO: else-statement for Admin. Copy <li> Manage Candidate, Manage voter and View Result. Path files, ada dekat Admin folder</li> -->
+
 
     <!-- <li class="nav-item">fa fa-usersfa-users fa-external-link-square
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"

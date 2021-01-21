@@ -17,8 +17,11 @@
             if($user_type == 'voter' ) {
                 $login_id = $row['studentID'];
                 $login_name = $row['username'];
-            } else {
+            } else if($user_type == 'candidate'){
                 $login_id = $row['candidateID'];
+                $login_name = $row['username'];
+            } else {
+                $login_id = $row['studentID'];
                 $login_name = $row['username'];
             }
         }
