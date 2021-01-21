@@ -60,7 +60,6 @@
                                     </thead>
                                     <tbody>
                                         <?php foreach ($candidates as $candidate) {?>
-                                        <>
                                             <td><?php echo $candidate['studentID']; ?></td>
                                             <td><?php echo $candidate['email']; ?></td>
                                             <td><?php echo $candidate['username']; ?></td>
