@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<title>Home</title>
 <?php include "../../views/layout/head.php"; ?>
 <body id="page-top">
     <div id="wrapper">
@@ -12,6 +13,7 @@
                 <div class="container-fluid">
                     
                     <!-- Magic Happens Here -->
+
 
                 </div>
             </div>
