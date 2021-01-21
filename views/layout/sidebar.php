@@ -10,12 +10,19 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
+    <?php if($user_type == "candidate" || $user_type == "voter") { ?>
     <li class="nav-item active">
         <a class="nav-link" href="../home/home.php">
             <i class="fas fa-fw fa-home"></i>
             <span>Home</span></a>
     </li>
-
+    <?php } else { ?>
+        <li class="nav-item active">
+        <a class="nav-link" href="../home/adminhome.php">
+            <i class="fas fa-fw fa-home"></i>
+            <span>Home</span></a>
+        </li>
+    <?php } ?>
     <!-- Divider -->
     <hr class="sidebar-divider">
 

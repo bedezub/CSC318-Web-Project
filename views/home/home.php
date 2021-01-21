@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<title>Home</title>
 <?php include "../../views/layout/head.php"; ?>
 <body id="page-top">
     <div id="wrapper">
@@ -24,6 +25,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <?php include '../../views/layout/footer.php'?>
